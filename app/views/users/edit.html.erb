@@ -1,0 +1,43 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-2">
+			<h2>Edit page</h2>
+		</div>
+	</div>
+	   <%= form_for(@user, url: user_path) do |f| %>
+	<div class="row">
+		<div class="col-sm-6 col-md-offset-3">
+			<% if @user.errors.any? %>
+			<div id="error_explanation" class="alert alert-danger">
+				<h3><%= @user.errors.count %>error prohibited this obj from being saved:</h3>
+				<ul>
+					<% @user.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+			<p>ファイル選択 <%= f.attachment_field :profile_image %></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<table class="table table-bordered">
+		  <tr>
+			<th>Your name</th>
+			<th><%= f.text_field :name %></th>
+		  </tr>
+		  <tr>
+			<th>Introduction</th>
+			<th><%= f.text_area :introduction %></th>
+		  </tr>
+		    </table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-offset-9">
+			<p><%= f.submit 'Save', class: "btn btn-primary"%></p>
+		</div>
+	</div>
+	<% end %>
+</div>

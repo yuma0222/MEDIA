@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-9">
+			<div class="row">
+				<div class="col-sm-3 new_post">
+					<%= link_to "+", new_post_path, class: "btn btn-primary btn-circle" %>
+				</div>
+				<% @posts.each do |post| %>
+				<div class="col-sm-3 post_box">
+					<table border="1">
+						<tr>
+							<td colspan="2">○月○日</td>
+						</tr>
+						<tr>
+							<td><%= link_to post_path(post.id) do %>
+								<%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg' %>
+								<% end %>
+							</td>
+							<td><span><%= link_to post.title, post_path(post.id) %></span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<% end %>
+				<div class="row">
+					<div class="text-center">
+						<%= paginate @posts, class: "paginate" %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%= render 'users/sidebar', user:current_user %>
+		<!-- サイドバー -->
+	</div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-2">
+			<h2>English Diary</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<h3>学習項目   <%= @post.title %></h3>
+			<h3>学習時間   <%= @post.time %></h3>
+			<h3>新出単語   <%= @post.word %></h3>
+			<h3>学習日記    <%= @post.body %></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4 col-md-offset-8">
+		　　<% if @post.user == current_user %>
+		   <p><%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %></p>
+			<p><%= link_to "Destroy", post_path(@post.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？"  %></p>
+			<% end %>
+		</div>
+	</div>
+</div>
