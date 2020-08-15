@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-9">
+			<div class="row">
+				<% @users.each do |user| %>
+				<div class="col-sm-3 post_box">
+					<table border="1">
+						<tr>
+							<td colspan="2">User name</td>
+						</tr>
+						<tr>
+							<td><%= link_to user_path(user.id) do %>
+								<%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
+								<% end %>
+							</td>
+							<td><span><%= link_to user.name, user_path(user.id) %></span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<% end %>
+				<div class="row">
+					<div class="text-center">
+					</div>
+				</div>
+			</div>
+		</div>
+		<%= render 'users/sidebar', user:current_user %>
+		<!-- サイドバー -->
+	</div>
+</div>

@@ -29,7 +29,9 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-offset-9">
-			<p><%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %></p>
+			<% if @user == current_user %>
+			  <p><%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %></p>
+			<% end %>
 		</div>
 	</div>
 </div>

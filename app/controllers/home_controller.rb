@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 	end
 
 	def index
-	  @posts = Post.page(params[:page]).reverse_order
+	  @posts = current_user.posts
 	end
 
 	def about

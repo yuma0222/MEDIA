@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
 	def index
+		@posts = Post.page(params[:page]).reverse_order
 	end
 
 	def new
@@ -26,6 +27,12 @@ class PostsController < ApplicationController
 	end
 
 	def update
+		@post = Post.find(params[:id])
+		if @post.update(post_params)
+			redirect_to home_index_path(@post.id)
+	    else
+	    	render :edit
+	    end
 	end
 
 	def destroy

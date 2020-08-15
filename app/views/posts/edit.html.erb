@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-2">
+			<h2>English Diary</h2>
+		</div>
+	</div>
+	  <%= form_for(@post, url: post_path) do |f| %>
+	  <div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<% if @post.errors.any? %>
+			<div id="error_explanation" class="alert alert-danger">
+				<h3><%= @user.errors.count %>error prohibited this obj from being saved:</h3>
+				<ul>
+					<% @post.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<h3>学習項目     <%= f.text_field :title %></h3>
+			<h3>学習時間   <%= f.select :time, options_for_select((1..100).to_a), {include_blank: "学習時間"},:required => true %></h3>
+			<h3>新出単語   <%= f.text_area :word %></h3>
+			<h3>学習日記    <%= f.text_area :body %></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4 col-md-offset-8">
+		   <p><%= f.submit "Save", class: "btn btn-primary" %></p>
+			<% end %>
+		</div>
+	</div>
+</div>

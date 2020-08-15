@@ -13,7 +13,7 @@
 						</tr>
 						<tr>
 							<td><%= link_to post_path(post.id) do %>
-								<%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg' %>
+								<%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
 								<% end %>
 							</td>
 							<td><span><%= link_to post.title, post_path(post.id) %></span>
@@ -24,7 +24,7 @@
 				<% end %>
 				<div class="row">
 					<div class="text-center">
-						<%= paginate @posts, class: "paginate" %>
+						<!--ページ機能-->
 					</div>
 				</div>
 			</div>
