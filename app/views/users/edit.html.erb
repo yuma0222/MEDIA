@@ -35,9 +35,12 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-offset-9">
+		<div class="col-sm-1 col-sm-offset-8">
 			<p><%= f.submit 'Save', class: "btn btn-primary"%></p>
+			<% end %>
+		</div>
+		<div class="col-sm-1">
+               <p><%= link_to "Leave", leave_path, class: "btn btn-primary" %></p>
 		</div>
 	</div>
-	<% end %>
 </div>

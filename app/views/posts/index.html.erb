@@ -13,7 +13,20 @@
 								<%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
 								<% end %>
 							</td>
-							<td><span><%= link_to post.title, post_path(post.id) %></span>
+							<td>
+								<p>
+								<span><%= link_to post.title, post_path(post.id) %></span>
+							    </p>
+								<p><% if post.favorited_by?(current_user) %>
+								<%= link_to post_favorites_path(post), method: :delete do %>
+								<span class="glyphicon glyphicon-heart"><%= post.favorites.count %></span>
+								<% end %>
+								<% else %>
+								<%= link_to post_favorites_path(post), method: :post do %>
+								<span class="glyphicon glyphicon-heart-empty"><%= post.favorites.count %></span>
+						    	</p>
+								<% end %>
+								<% end %>
 							</td>
 						</tr>
 					</table>

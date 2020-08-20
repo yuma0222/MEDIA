@@ -25,7 +25,17 @@ class UsersController < ApplicationController
 	def leave
 	end
 
+    def follows
+    end
+
+    def followers
+    end
+
 	def destroy
+	   @user = User.find(params[:id])
+	   @user.destroy
+	   flash[:success] = 'ユーザーを削除しました。'
+	   redirect_to :root
 	end
 
 	private
