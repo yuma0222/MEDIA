@@ -1,45 +1,51 @@
 <div class="container">
+  <div class="row">
+    <div class="col-sm-offset-2">
+      <h1>POSTED DIARIES</h1>
+    </div>
+  </div>
 	<div class="row">
 		<div class="col-sm-9">
 			<div class="row">
 				<% @posts.each do |post| %>
-				<div class="col-sm-3 post_box">
-					<table border="1">
-						<tr>
-							<td colspan="2">○月○日</td>
+				<div class="col-sm-4 post_box">
+					<table border="1", class="box-table2">
+						<tr class="box-tr2">
+							<td colspan="2", class="box-td-top2"><%= post.date %></td>
 						</tr>
-						<tr>
-							<td><%= link_to post_path(post.id) do %>
-								<%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
+						<tr class="box-tr2">
+							<td class="box-td2">
+								<%= link_to user_path(post.user_id) do %>
+								<%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
 								<% end %>
 							</td>
-							<td>
-								<p>
-								<span><%= link_to post.title, post_path(post.id) %></span>
-							    </p>
-								<p><% if post.favorited_by?(current_user) %>
-								<%= link_to post_favorites_path(post), method: :delete do %>
-								<span class="glyphicon glyphicon-heart"><%= post.favorites.count %></span>
-								<% end %>
-								<% else %>
-								<%= link_to post_favorites_path(post), method: :post do %>
-								<span class="glyphicon glyphicon-heart-empty"><%= post.favorites.count %></span>
-						    	</p>
-								<% end %>
-								<% end %>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<% end %>
-				<div class="row">
-					<div class="text-center">
-						<%= paginate @posts, class: "paginate" %>
+							<td class="box-td2">
+								<ul>
+									<li>
+										<span><%= link_to post.title, post_path(post.id), class: "pull-left" %></span>
+									</li>
+									　　<% if post.favorited_by?(current_user) %>
+									<li><%= link_to post_favorites_path(post), class: "pull-left", method: :delete do %>
+										<span class="glyphicon glyphicon-heart"><%= post.favorites.count %></span>
+										<% end %>
+										<% else %>
+										<%= link_to post_favorites_path(post), class: "pull-left", method: :post do %>
+										<span class="glyphicon glyphicon-heart-empty"><%= post.favorites.count %></span>
+									</li>
+									<% end %>
+									<% end %>
+								</td>
+							</tr>
+						</table>
 					</div>
+					<% end %>
 				</div>
 			</div>
+			<%= render 'users/sidebar', user:current_user %>
 		</div>
-		<%= render 'users/sidebar', user:current_user %>
-		<!-- サイドバー -->
+		<div class="row">
+			<div class="col-sm-9 text-center">
+				<%= paginate(@posts) %>
+			</div>
+		</div>
 	</div>
-</div>

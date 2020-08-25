@@ -1,0 +1,49 @@
+  <div class="container">
+  <div class="row">
+    <div class="col-sm-offset-2">
+      <h1>FOLLOWERS</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row">
+        <% @user.follower_user.where.not(id: @user.id).each do |user| %>
+        <div class="col-sm-3 user_box">
+          <table border="1", class="box-table4">
+            <tr class="box-tr4">
+              <td class="box-td-top4">
+                <%= link_to user_path(user.id) do %>
+                <%= attachment_image_tag user, :profile_image, :fill, 70, 70, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
+                <% end %>
+              </td>
+              <td class="box-td4">
+                <h3><%= link_to user.name, user_path(user.id) %></h3>
+              </td>
+            </tr>
+            <tr>
+              <td class="box-td4">
+                 <p>follows : <%= link_to user.follower.count, user_follows_path(user) %></p>
+                 <p>followers : <%= link_to user.followed.count, user_followers_path(user) %></p>
+              </td>
+              <td class="box-td4">
+                <p><% if current_user != user %>
+                  <% if current_user.following?(user) %>
+                  <%= link_to 'Unfollow', user_relationships_path(user.id), method: :delete, class: "btn btn-primary" %>
+                  <% else %>
+                  <%= link_to 'Follow', user_relationships_path(user.id), method: :POST, class: "btn btn-success" %>
+                  <% end %>
+                  <% end %>
+                </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <%= paginate(@users) %>
+    </div>
+  </div>

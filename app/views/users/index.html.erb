@@ -1,31 +1,51 @@
 <div class="container">
+  <div class="row">
+    <div class="col-sm-offset-2">
+      <h1>USERS INDEX</h1>
+    </div>
+  </div>
 	<div class="row">
 		<div class="col-sm-9">
 			<div class="row">
 				<% @users.each do |user| %>
-				<div class="col-sm-3 post_box">
-					<table border="1">
-						<tr>
-							<td colspan="2">User name</td>
-						</tr>
-						<tr>
-							<td><%= link_to user_path(user.id) do %>
-								<%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
+				<div class="col-sm-4 user_box">
+					<table border="1", class="box-table3">
+						<tr class="box-tr3">
+							<td class="box-td-top3">
+								<%= link_to user_path(user.id) do %>
+								<%= attachment_image_tag user, :profile_image, :fill, 70, 70, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
 								<% end %>
 							</td>
-							<td><span><%= link_to user.name, user_path(user.id) %></span>
+							<td class="box-td3">
+								<h3><%= link_to user.name, user_path(user.id) %></h3>
+							</td>
+						</tr>
+						<tr>
+							<td class="box-td3">
+								 <p>follows : <%= link_to user.follower.count, user_follows_path(user) %></p>
+                                 <p>followers : <%= link_to user.followed.count, user_followers_path(user) %></p>
+                            </td>
+							<td class="box-td3">
+								<p><% if current_user != user %>
+									<% if current_user.following?(user) %>
+									<%= link_to 'Unfollow', user_relationships_path(user.id), method: :delete, class: "btn btn-primary" %>
+									<% else %>
+									<%= link_to 'Follow', user_relationships_path(user.id), method: :POST, class: "btn btn-success" %>
+									<% end %>
+									<% end %>
+								</p>
 							</td>
 						</tr>
 					</table>
 				</div>
 				<% end %>
-				<div class="row">
-					<div class="text-center">
-					</div>
-				</div>
 			</div>
 		</div>
 		<%= render 'users/sidebar', user:current_user %>
 		<!-- サイドバー -->
 	</div>
-</div>
+	<div class="row">
+		<div class="col-sm-9 text-center">
+			<%= paginate(@users) %>
+		</div>
+	</div>

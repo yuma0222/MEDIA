@@ -17,16 +17,93 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.navbar-header {
+	font-size: 40px;
+	padding-bottom: 6px;
+	letter-spacing: 0.4em;
+}
+
 nav {
-	background-color :#98FB98;
+    color: #FFFFFF;
+	background-color :#000066;
 }
 
 
 body {
-    margin-top: 80px;
+    margin-top: 90px;
 	background-color: #ffffff;
 }
 
 .text-color {
 	color: white;
+}
+
+.my_post_box,
+.post_box,
+.user_box  {
+    padding: 30px;
+ }
+
+
+.new-btn-box {
+    font-size: 53px;
+}
+
+.new-btn {
+    margin-top: 40px;
+    margin-left: 85px;
+	width: 90px;
+	height: 90px;
+}
+
+table.box-table1,
+.box-table2,
+.box-table3,
+.box-table4 {
+    border-collapse: separate;
+    border-radius: 35px;
+    width: 100%;
+    background-color: #DDDDDD;
+}
+
+.box-tr1,
+.box-tr2,
+.box-tr4 {
+    text-align: center;
+	height: 30px;
+}
+
+.box-tr3 {
+	height: 85px;
+}
+
+.box-td-top1,
+.box-td-top2 {
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;
+}
+
+.box-td-top3,
+.box-td-top4 {
+	border: transparent;
+}
+
+.box-td1,
+.box-td2  {
+    padding-left: 10px;
+	border: 0px none;
+	height: 80px;
+}
+
+.box-td3,
+.box-td4 {
+    text-align: center;
+	border: 0px none;
+	height: 40px;
+}
+
+ul {
+    padding-right: 5px;
+	list-style: none;
 }

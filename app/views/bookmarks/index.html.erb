@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-offset-2">
+      <h1>POSTED DIARIES</h1>
+    </div>
+  </div>
+	<div class="row">
+		<div class="col-sm-9">
+			<div class="row">
+                 <% @bookmarks.each do |bookmark| %>
+				<div class="col-sm-4 post_box">
+					<table border="1", class="box-table2">
+						<tr class="box-tr2">
+							<td colspan="2", class="box-td-top2"><%= bookmark.post.date %></td>
+						</tr>
+						<tr class="box-tr2">
+							<td class="box-td2">
+								<%= link_to user_path(bookmark.post.user_id) do %>
+								<%= attachment_image_tag bookmark.post.user, :profile_image, :fill, 70, 70, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
+								<% end %>
+							</td>
+							<td class="box-td2">
+								<ul>
+									<li>
+										<span><%= link_to bookmark.post.title, post_path(bookmark.post.id), class: "pull-left" %></span>
+									</li>
+									　　<% if bookmark.post.favorited_by?(current_user) %>
+									<li><%= link_to post_favorites_path(bookmark.post.id), class: "pull-left", method: :delete do %>
+										<span class="glyphicon glyphicon-heart"><%= bookmark.post.favorites.count %></span>
+										<% end %>
+										<% else %>
+										<%= link_to post_favorites_path(bookmark.post.id), class: "pull-left", method: :post do %>
+										<span class="glyphicon glyphicon-heart-empty"><%= bookmark.post.favorites.count %></span>
+									</li>
+									<% end %>
+									<% end %>
+								</td>
+
+							</tr>
+						</table>
+					</div>
+					<% end %>
+				</div>
+			</div>
+			<%= render 'users/sidebar', user:current_user %>
+		</div>
+		<div class="row">
+			<div class="col-sm-9 text-center">
+				<%= paginate(@bookmarks) %>
+			</div>
+		</div>
+	</div>

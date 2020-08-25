@@ -1,7 +1,16 @@
 class PostsController < ApplicationController
+	before_action :authenticate_user!
 
 	def index
-		@posts = Post.page(params[:page]).reverse_order
+		if signed_in?
+           @post  = Post.where(user_id:current_user).build
+        if params[:q]
+           @posts = Post.search_by_keyword(params[:q])
+                        .page(params[:page])
+         else
+          @posts = Post.order(created_at: :desc).page(params[:page]).per(15)
+      end
+      end
 	end
 
 	def new
@@ -41,9 +50,12 @@ class PostsController < ApplicationController
 		redirect_to home_index_path
 	end
 
+	def bookmarks
+    end
+
 	private
 
 	def post_params
-	   params.require(:post).permit(:title, :time, :word, :body)
+	   params.require(:post).permit(:date, :title, :time, :word, :body)
     end
 end

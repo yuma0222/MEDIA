@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@users = User.all
+		@users = User.order(created_at: :desc).page(params[:page]).per(15).order(created_at: :desc)
 	end
 
 	def show
@@ -24,12 +24,6 @@ class UsersController < ApplicationController
 
 	def leave
 	end
-
-    def follows
-    end
-
-    def followers
-    end
 
 	def destroy
 	   @user = User.find(params[:id])
