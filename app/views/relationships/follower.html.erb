@@ -28,9 +28,9 @@
               <td class="box-td4">
                 <p><% if current_user != user %>
                   <% if current_user.following?(user) %>
-                  <%= link_to 'Unfollow', user_relationships_path(user.id), method: :delete, class: "btn btn-primary" %>
+                  <%= link_to 'Unfollow', user_relationships_path(user.id), method: :delete, class: "btn outline-info" %>
                   <% else %>
-                  <%= link_to 'Follow', user_relationships_path(user.id), method: :POST, class: "btn btn-success" %>
+                  <%= link_to 'Follow', user_relationships_path(user.id), method: :POST, class: "btn btn-info" %>
                   <% end %>
                   <% end %>
                 </p>

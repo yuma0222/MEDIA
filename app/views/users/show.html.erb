@@ -10,9 +10,9 @@
 			<h3>Followers : <%= link_to @user.followed.count, user_followers_path(@user) %></h3>
 			<p> <% if current_user != @user %>
 				<% if current_user.following?(@user) %>
-				<%= link_to 'Unfollow', user_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
+				<%= link_to 'Unfollow', user_relationships_path(@user.id), method: :delete, class: "btn btn-outline-info" %>
 				<% else %>
-				<%= link_to 'Follow', user_relationships_path(@user.id), method: :POST, class: "btn btn-success" %></p>
+				<%= link_to 'Follow', user_relationships_path(@user.id), method: :POST, class: "btn btn-info" %></p>
 				<% end %>
 			    <% end %>
 			</div>
@@ -41,4 +41,51 @@
 				<% end %>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<% if @user != current_user %>
+				<% @posts.each do |post| %>
+				<div class="col-sm-3 post_box">
+					<table border="1", class="box-table2">
+						<tr class="box-tr2">
+							<td colspan="2", class="box-td-top2"><%= post.date %></td>
+						</tr>
+						<tr class="box-tr2">
+							<td class="box-td2">
+								<%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
+							</td>
+							<td class="box-td2">
+								<ul>
+									<li>
+										<span><%= link_to post.title, post_path(post.id), class: "pull-left" %></span>
+									</li>
+									　　<% if post.favorited_by?(current_user) %>
+									<li><%= link_to post_favorites_path(post), class: "pull-left", method: :delete do %>
+										<span class="glyphicon glyphicon-heart"><%= post.favorites.count %></span>
+										<% end %>
+										<% else %>
+										<%= link_to post_favorites_path(post), class: "pull-left", method: :post do %>
+										<span class="glyphicon glyphicon-heart-empty"><%= post.favorites.count %></span>
+									</li>
+									<% end %>
+									<% end %>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<% end %>
+				</div>
+
+				<% end %>
+			</div>
 </div>
+
+
+
+
+
+
+
+
+
+

@@ -4,13 +4,32 @@
 			<h1>English Diary</h1>
 		</div>
 	</div>
+		<div class="row">
+		   <div class="col-sm-2 col-sm-offset-3">
+		   	<h3>　投稿者</h3>
+		   </div>
+		    <div class="col-sm-3">
+		     <table border="1", class="box-table5">
+				<tr class="box-tr5">
+				   <td class="box-td-top5">
+				 <%= link_to user_path(@post.user_id) do %>
+				 <%= attachment_image_tag @post.user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
+				<% end %>
+			      </td>
+			  <td class="box-td5">
+				 <h3><%= link_to @post.user.name, user_path(@post.user_id) %></h3>
+			  </td>
+	       	 </tr>
+	      </table>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3">
-			<h3>学習日   <%= @post.date %></h3>
-			<h3>学習項目   <%= @post.title %></h3>
-			<h3>学習時間   <%= @post.time %></h3>
-			<h3>新出単語   <%= @post.word %></h3>
-			<h3>学習日記    <%= @post.body %></h3>
+			<h3>　学習日　　　　　　<%= @post.date %></h3>
+			<h3>　学習項目　　　　　<%= @post.title %></h3>
+			<h3>　学習時間　　　　　<%= @post.time %></h3>
+			<h3>　新出単語　　　　　<%= @post.word %></h3>
+			<h3>　学習日記　　　　　<%= @post.body %></h3>
 			<p><% if @post.favorited_by?(current_user) %>
 				<%= link_to post_favorites_path(@post), method: :delete do %>
 				<span class="glyphicon glyphicon-heart"><%= @post.favorites.count %></span>

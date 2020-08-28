@@ -39,11 +39,13 @@ body {
 }
 
 .my_post_box,
-.post_box,
-.user_box  {
-    padding: 30px;
+.post_box  {
+    padding: 20px;
  }
 
+.user_box  {
+    padding: 10px;
+ }
 
 .new-btn-box {
     font-size: 53px;
@@ -57,13 +59,26 @@ body {
 }
 
 table.box-table1,
-.box-table2,
-.box-table3,
+.box-table2 {
+    border-collapse: separate;
+    border-radius: 35px;
+    width: 100%;
+    background-color: #F0F8FF;
+}
+
+table.box-table3,
 .box-table4 {
     border-collapse: separate;
     border-radius: 35px;
     width: 100%;
-    background-color: #DDDDDD;
+    background-color: #FFFFF0;
+}
+
+.box-table5 {
+    border-collapse: separate;
+    border-radius: 35px;
+    width: 70%;
+    background-color: #FFFFF0;
 }
 
 .box-tr1,
@@ -77,6 +92,10 @@ table.box-table1,
 	height: 85px;
 }
 
+.box-tr5 {
+	height: 75px;
+}
+
 .box-td-top1,
 .box-td-top2 {
 	border-top: transparent;
@@ -85,7 +104,8 @@ table.box-table1,
 }
 
 .box-td-top3,
-.box-td-top4 {
+.box-td-top4,
+.box-td-top5 {
 	border: transparent;
 }
 
@@ -97,10 +117,17 @@ table.box-table1,
 }
 
 .box-td3,
-.box-td4 {
+.box-td4, {
     text-align: center;
 	border: 0px none;
 	height: 40px;
+}
+
+.box-td5 {
+    padding-bottom: 14px;
+    text-align: center;
+	border: 0px none;
+	height: 30px;
 }
 
 ul {

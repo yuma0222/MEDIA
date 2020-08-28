@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@bookmarks = Bookmark.where(user_id: current_user.id).includes(:user).order(created_at: :desc).page(params[:page]).per(20)
+		@bookmarks = Bookmark.where(user_id: current_user).includes(:user).order(created_at: :desc).page(params[:page]).per(20)
 	end
 
 	def create

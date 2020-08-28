@@ -16,24 +16,22 @@
 						<tr class="box-tr2">
 							<td class="box-td2">
 								<%= link_to user_path(post.user_id) do %>
-								<%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
+								<%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
 								<% end %>
 							</td>
 							<td class="box-td2">
 								<ul>
-									<li>
-										<span><%= link_to post.title, post_path(post.id), class: "pull-left" %></span>
-									</li>
-									　　<% if post.favorited_by?(current_user) %>
+									<li><%= link_to post.title, post_path(post.id), class: "pull-left" %></li>
+									<li><% if post.favorited_by?(current_user) %></li>
 									<li><%= link_to post_favorites_path(post), class: "pull-left", method: :delete do %>
-										<span class="glyphicon glyphicon-heart"><%= post.favorites.count %></span>
+										<p class="glyphicon glyphicon-heart"><%= post.favorites.count %></p>
 										<% end %>
 										<% else %>
 										<%= link_to post_favorites_path(post), class: "pull-left", method: :post do %>
-										<span class="glyphicon glyphicon-heart-empty"><%= post.favorites.count %></span>
-									</li>
+										<p class="glyphicon glyphicon-heart-empty"><%= post.favorites.count %></p>
 									<% end %>
 									<% end %>
+								</li>
 								</td>
 							</tr>
 						</table>

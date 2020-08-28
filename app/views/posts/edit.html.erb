@@ -23,7 +23,7 @@
 		<div class="col-sm-6 col-sm-offset-3">
 			<h3>学習日     <%= f.date_field :date %></h3>
 			<h3>学習項目     <%= f.text_field :title %></h3>
-			<h3>学習時間   <%= f.select :time, options_for_select((1..100).to_a), {include_blank: "学習時間"},:required => true %></h3>
+			<h3>学習時間   <%= f.select :time, time_list, {include_blank: "学習時間"}, :required => true %></h3>
 			<h3>新出単語   <%= f.text_area :word %></h3>
 			<h3>学習日記    <%= f.text_area :body %></h3>
 		</div>
