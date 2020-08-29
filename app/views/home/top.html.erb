@@ -1,21 +1,28 @@
-<div class="container">
+<div class="top-img bg-image-full" style="background-image: url('https://unsplash.it/1900/1080?image=1073');">
+  <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
+  <div style="height: 300px;"></div>
+</div>
+
+<!-- Content section -->
+<section class="py-5">
+  <div class="container">
     <div class="row">
-      <div class="top-message col-xs-offset-3 col-xs-6">
-        <h1><strong>MEDIA</strong></span></h1>
-        <p>you can write your learning diary anytime anywhere</p>
-        <p>Try to write!</p>
-        <div class ="btn-wapper">
-          <div class="row">
-            <div class="col-xs-10 col-xs-offset-1">
-             <%= link_to "Log in", new_user_session_path, class: "btn btn-info btn-block" %>
-           </div>
-         </div>
-         <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success btn-block" %>
-          </div>
-        </div>
-      </div>
-     </div>
+       <div class="col-xs-8 col-xs-offset-2">
+      <h1><span class="top-title">M</span>y <span class="top-title">E</span>nglish <span class="top-title">DIA</span>ry</h1>
+      <p class="lead">You can write your own diary for leaning, try to write!</p>
     </div>
+    </div>
+ </div>
+  </section>
+</div>
+</div>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+   <%= link_to "Log in", new_user_session_path, class: "btn btn-primary btn-block" %>
+ </div>
+</div>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-default btn-block" %>
+  </div>
 </div>

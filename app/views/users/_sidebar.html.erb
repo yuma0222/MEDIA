@@ -1,11 +1,10 @@
 <div class="col-sm-3">
-  <h1>My page</h1>
+  <h1>About Me</h1>
   <div class="profile_image">
     <%= attachment_image_tag user, :profile_image, :fill, 150, 150, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
   </div>
   <table class="table">
     <tbody>
-      <tr></tr>
       <tr>
         <td>name</td>
         <td><%= user.name %></td>
@@ -16,11 +15,11 @@
       </tr>
       <tr>
         <td>follows : </td>
-        <td><%= link_to user.follower.count, user_follows_path(user) %></td>
+        <td><%= link_to user.follower.count, user_follows_path(user), class: "btn btn-default" %></td>
       </tr>
       <tr>
         <td>followers : </td>
-        <td><%= link_to user.followed.count, user_followers_path(user) %></td>
+        <td><%= link_to user.followed.count, user_followers_path(user), class: "btn btn-default" %></td>
       </tr>
     </tbody>
   </table>

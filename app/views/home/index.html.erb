@@ -5,7 +5,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-9">
+		<div class="post-index col-sm-9">
 			<div class="row">
 				<div class="col-sm-4 new_post">
 					<span><%= link_to new_post_path, class: "btn btn-primary btn-circle new-btn" do %>
@@ -15,7 +15,7 @@
 				</div>
 				<% @posts.each do |post| %>
 				<div class="col-sm-4 my_post_box">
-					<table border="1", class="box-table1">
+					<table border="3", class="box-table1">
 						<tr class="box-tr1">
 							<td colspan="2", class="box-td-top1"><%= post.date %></td>
 						</tr>

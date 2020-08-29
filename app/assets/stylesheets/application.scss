@@ -17,6 +17,22 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.top-img {
+    background-size: cover;
+}
+
+.top-title {
+    color: #ff0000;
+}
+
+.style_about {
+    text-align: center;
+}
+
+.about-img {
+    background-size: cover;
+}
+
 .navbar-header {
 	font-size: 40px;
 	padding-bottom: 6px;
@@ -58,6 +74,17 @@ body {
 	height: 90px;
 }
 
+.profile_image {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.post-index {
+    border: 1px solid;
+    border-top: 0px none;
+    border-bottom: 0px none;
+}
+
 table.box-table1,
 .box-table2 {
     border-collapse: separate;
@@ -88,7 +115,8 @@ table.box-table3,
 	height: 30px;
 }
 
-.box-tr3 {
+.box-tr3,
+.box-tr4 {
 	height: 85px;
 }
 
@@ -104,7 +132,12 @@ table.box-table3,
 }
 
 .box-td-top3,
-.box-td-top4,
+.box-td-top4 {
+   padding-left: 25px;
+   border: transparent;
+}
+
+
 .box-td-top5 {
 	border: transparent;
 }
@@ -116,11 +149,28 @@ table.box-table3,
 	height: 80px;
 }
 
-.box-td3,
-.box-td4, {
+
+.box-td3a,
+.box-td4a {
     text-align: center;
-	border: 0px none;
-	height: 40px;
+     width: 155px;
+    border: 0px none;
+
+}
+
+.box-td3b,
+.box-td4b {
+    padding-left: 30px;
+    border: 0px none;
+}
+
+
+.box-td3c,
+.box-td4c {
+    margin: 30px;
+    padding-left: 40px;
+    border: 0px none;
+
 }
 
 .box-td5 {
