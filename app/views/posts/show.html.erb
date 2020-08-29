@@ -4,58 +4,83 @@
 			<h1>English Diary</h1>
 		</div>
 	</div>
-		<div class="row">
-		   <div class="col-sm-2 col-sm-offset-3">
-		   	<h3>　投稿者</h3>
-		   </div>
-		    <div class="col-sm-3">
-		     <table border="1", class="box-table5">
+	<div class="row">
+		<div class="col-sm-3 col-sm-offset-2">
+			<h3>　投稿者</h3>
+		</div>
+		<div class="col-sm-3">
+			<table border="1", class="box-table5">
 				<tr class="box-tr5">
-				   <td class="box-td-top5">
-				 <%= link_to user_path(@post.user_id) do %>
-				 <%= attachment_image_tag @post.user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
-				<% end %>
-			      </td>
-			  <td class="box-td5">
-				 <h3><%= link_to @post.user.name, user_path(@post.user_id) %></h3>
-			  </td>
-	       	 </tr>
-	      </table>
+					<td class="box-td-top5">
+						<%= link_to user_path(@post.user_id) do %>
+						<%= attachment_image_tag @post.user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg", size:'60x80' %>
+						<% end %>
+					</td>
+					<td class="box-td5">
+						<h3><%= link_to @post.user.name, user_path(@post.user_id) %></h3>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3">
-			<h3>　学習日　　　　　　<%= @post.date %></h3>
-			<h3>　学習項目　　　　　<%= @post.title %></h3>
-			<h3>　学習時間　　　　　<%= @post.time %></h3>
-			<h3>　新出単語　　　　　<%= @post.word %></h3>
-			<h3>　学習日記　　　　　<%= @post.body %></h3>
-			<p><% if @post.favorited_by?(current_user) %>
-				<%= link_to post_favorites_path(@post), method: :delete do %>
-				<span class="glyphicon glyphicon-heart"><%= @post.favorites.count %></span>
-				<% end %>
-				<% else %>
-				<%= link_to post_favorites_path(@post), method: :post do %>
-				<span class="glyphicon glyphicon-heart-empty"><%= @post.favorites.count %></span>
-				<% end %>
-				<% end %>
-			</p>
+		<div class="show-table1 col-sm-8 col-sm-offset-2">
+			<table class="table">
+				<tr class="show-tr1">
+					<td>学習日</td>
+					<td><%= @post.date %></td>
+				</tr>
+				<tr class="show-tr1">
+					<td>学習項目</td>
+					<td><%= @post.title %></td>
+				</tr>
+				<tr class="show-tr1">
+					<td>学習時間</td>
+					<td><%= @post.time %></td>
+				</tr>
+				<tr class="show-tr1">
+					<td>新出単語</td>
+					<td><%= @post.word %></td>
+				</tr>
+				<tr>
+					<td class="show-td1">学習日記</td>
+					<td></td>
+				</tr>
+			</table>
 		</div>
 	</div>
-	 <div class="row">
-        <div class="col-sm-4 col-md-offset-8">
-			<% if !Bookmark.exists?(user_id: current_user.id, post_id: @post.id) %>
-			<p><%= link_to "Bookmark",post_bookmarks_path(@post), class: "btn btn-primary", method: :post %></p>
+	<div class="row">
+		<div class="show-table1 col-sm-6 col-sm-offset-3">
+			<p class="show-body"><%= @post.body %></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-1 col-md-offset-8">
+			<% if @post.favorited_by?(current_user) %>
+			<%= link_to post_favorites_path(@post), method: :delete do %>
+			<span class="glyphicon glyphicon-heart"><%= @post.favorites.count %></span>
+			<% end %>
 			<% else %>
-			<p><%= link_to "Cancel",post_bookmarks_path(@post), class: "btn btn-danger", method: :delete %></p>
+			<%= link_to post_favorites_path(@post), method: :post do %>
+			<span class="glyphicon glyphicon-heart-empty"><%= @post.favorites.count %></span>
+			<% end %>
+			<% end %>
+		</div>
+		<div class="col-sm-1">
+			<% if !Bookmark.exists?(user_id: current_user.id, post_id: @post.id) %>
+			<p><%= link_to "Bookmark",post_bookmarks_path(@post), class: "btn btn-success", method: :post %></p>
+			<% else %>
+			<p><%= link_to "Cancel",post_bookmarks_path(@post), class: "btn btn-default", method: :delete %></p>
 			<% end %>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-4 col-md-offset-8">
+		<div class="col-sm-2 col-md-offset-7">
 			　　<% if @post.user == current_user %>
-			<p><%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %></p>
-			<p><%= link_to "Destroy", post_path(@post.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？"  %></p>
+			<%= link_to "Edit", edit_post_path(@post), class: "btn btn-warning pull-right" %>
+		</div>
+		<div class="col-sm-1">
+			<%= link_to "Destroy", post_path(@post.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？"  %>
 			<% end %>
 		</div>
 	</div>

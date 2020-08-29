@@ -21,7 +21,7 @@
 						</tr>
 						<tr class="box-tr1">
 							<td class="box-td1">
-								<%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', class: "profile-img pull-left img-circle", fallback: "no_image.jpg" %>
+								<%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', class: "profile-img pull-left img-circle", fallback: "no_image.jpg", size:'70x90' %>
 							</td>
 							<td class="box-td1"><span><%= link_to post.title, post_path(post.id), class: "pull-left" %></span>
 							</td>

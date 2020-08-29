@@ -1,7 +1,7 @@
 <div class="col-sm-3">
   <h1>About Me</h1>
   <div class="profile_image">
-    <%= attachment_image_tag user, :profile_image, :fill, 150, 150, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg" %>
+    <%= attachment_image_tag user, :profile_image, :fill, 150, 150, format: 'jpeg', class: "img-circle center-block profile-img", fallback: "no_image.jpg", size:'120x135' %>
   </div>
   <table class="table">
     <tbody>
@@ -14,7 +14,7 @@
         <td><%= user.introduction %></td>
       </tr>
       <tr>
-        <td>follows : </td>
+        <td>follows :　</td>
         <td><%= link_to user.follower.count, user_follows_path(user), class: "btn btn-default" %></td>
       </tr>
       <tr>

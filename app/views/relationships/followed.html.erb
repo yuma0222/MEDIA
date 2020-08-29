@@ -13,7 +13,7 @@
             <tr class="box-tr4">
               <td class="box-td-top4">
                 <%= link_to user_path(user.id) do %>
-                <%= attachment_image_tag user, :profile_image, :fill, 70, 70, format: 'jpeg', class: "img-circle profile-img", fallback: "no_image.jpg" %>
+                <%= attachment_image_tag user, :profile_image, :fill, 70, 70, format: 'jpeg', class: "img-circle profile-img", fallback: "no_image.jpg", size:'75x95' %>
                 <% end %>
               </td>
               <td class="box-td4a">
@@ -22,7 +22,7 @@
             </tr>
             <tr>
               <td class="box-td4b">
-                 <p>follows : <%= link_to user.follower.count, user_follows_path(user) %></p>
+                 <p>follows :　<%= link_to user.follower.count, user_follows_path(user) %></p>
                  <p>followers : <%= link_to user.followed.count, user_followers_path(user) %></p>
               </td>
               <td class="box-td4c">

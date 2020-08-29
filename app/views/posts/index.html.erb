@@ -16,7 +16,7 @@
 						<tr class="box-tr2">
 							<td class="box-td2">
 								<%= link_to user_path(post.user_id) do %>
-								<%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+								<%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size:'70x90' %>
 								<% end %>
 							</td>
 							<td class="box-td2">

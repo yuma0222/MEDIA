@@ -18,12 +18,36 @@
 			</div>
 			<% end %>
 		</div>
-		<div class="col-sm-6">
-			<h3>学習日     <%= f.date_field :date %></h3>
-			<h3>学習項目     <%= f.text_field :title %></h3>
-			<h3>学習時間   <%= f.select :time, time_list, {include_blank: "学習時間"}, :required => true %></h3>
-			<h3>新出単語   <%= f.text_area :word %></h3>
-			<h3>学習日記    <%= f.text_area :body %></h3>
+	</div>
+	<div class="row">
+		<div class="show-table1 col-sm-8 col-sm-offset-2">
+			<table class="table">
+				<tr class="show-tr1">
+					<td>学習日</td>
+					<td><%= f.date_field :date %></td>
+				</tr>
+				<tr class="show-tr1">
+					<td>学習項目</td>
+					<td><%= f.text_field :title %></td>
+				</tr>
+				<tr class="show-tr1">
+					<td>学習時間</td>
+					<td><%= f.select :time, time_list, {include_blank: "学習時間"}, :required => true %></td>
+				</tr>
+				<tr class="show-tr1">
+					<td>新出単語</td>
+					<td><%= f.text_area :word %></td>
+				</tr>
+				<tr>
+					<td class="show-td1">学習日記</td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="show-table1 col-sm-6 col-sm-offset-3">
+			<p class="show-body"><%= f.text_area :body %></p>
 		</div>
 	</div>
 	<div class="row">

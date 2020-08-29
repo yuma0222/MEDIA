@@ -6,7 +6,7 @@
 	</div>
 	   <%= form_for(@user, url: user_path) do |f| %>
 	<div class="row">
-		<div class="col-sm-6 col-md-offset-3">
+		<div class="col-sm-8 col-md-offset-2">
 			<% if @user.errors.any? %>
 			<div id="error_explanation" class="alert alert-danger">
 				<h3><%= @user.errors.count %>error prohibited this obj from being saved:</h3>
@@ -21,13 +21,13 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3">
+		<div class="show-table col-sm-8 col-sm-offset-2">
 			<table class="table">
-		  <tr>
+		  <tr class="show-tr2">
 			<th>Your name</th>
 			<th><%= f.text_field :name %></th>
 		  </tr>
-		  <tr>
+		  <tr class="show-tr2">
 			<th>Introduction</th>
 			<th><%= f.text_area :introduction %></th>
 		  </tr>
